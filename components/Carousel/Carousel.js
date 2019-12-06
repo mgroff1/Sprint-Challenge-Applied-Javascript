@@ -19,10 +19,10 @@
 */
 const cc = document.querySelector('.carousel-container');
 cc.style.background='black'
-document.body.appendChild(cc)
 
 
 let previous,next;
+window.onload = () =>{
 let build = () => {
 
   let creator = (ele, attributes, ...children) => {
@@ -43,7 +43,7 @@ let build = () => {
   }
 
 
-let carousel = creator('div',{class:'carousel'},previous = creator('div',{class:'left-button'},`<asdfasdfasd`),
+let carousel = creator('div',{class:'carousel'},previous = creator('div',{class:'left-button'},`<`),
 next = creator('div',{class:'right-button'},`>`),creator('img',{class:'slide',src:'./assets/carousel/mountains.jpeg'}),
 creator('img',{class:'slide',src:'./assets/carousel/computer.jpeg'}),creator('img',{class:'slide',src:'./assets/carousel/trees.jpeg'}),
 creator('img',{class:'slide',src:'./assets/carousel/turntable.jpeg'}));
@@ -75,3 +75,4 @@ previous.onclick = function(){
 }
 
 build()
+}
