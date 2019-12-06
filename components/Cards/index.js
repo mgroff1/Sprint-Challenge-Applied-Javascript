@@ -52,7 +52,7 @@ const cardContent = (obj) => {
     const img = document.createElement('img');
     img.src = obj.authorPhoto;
     imgs.appendChild(img);
-    const authorName = document.createElement('span').textContent = `By ${obj.author}`;
+    const authorName = document.createElement('span').textContent = `By ${obj.authorName}`;
     author.append(authorName);
     return cards;
 }
