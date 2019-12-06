@@ -17,11 +17,16 @@
     <div class="right-button"> > </div>
   </div>
 */
-const cc = document.querySelector('.carousel-container');
-cc.style.background='black'
+let cc = document.createElement('div');
+cc.classList.add('carousel');
+let c = document.querySelector('.carousel-container');
+c.appendChild(cc);
+c.style.width = '100%';
+c.style.height = '500px';
+cc.style.zIndex = '3';
+let img = document.createElement('img');
 
-
-let previous,next;
+let previous,next,currentSlide;
 window.onload = () =>{
 let build = () => {
 
@@ -40,25 +45,34 @@ let build = () => {
       }
     })
     return el;
-  }
 
+}
 
 let carousel = creator('div',{class:'carousel'},previous = creator('div',{class:'left-button'},`<`),
 next = creator('div',{class:'right-button'},`>`),creator('img',{class:'slide',src:'./assets/carousel/mountains.jpeg'}),
 creator('img',{class:'slide',src:'./assets/carousel/computer.jpeg'}),creator('img',{class:'slide',src:'./assets/carousel/trees.jpeg'}),
 creator('img',{class:'slide',src:'./assets/carousel/turntable.jpeg'}));
-
-const slides = document.querySelectorAll('.slide');
+let slides = document.querySelectorAll('.slide');
+console.log(slides)
+// const slides = document.querySelectorAll('.slide');
 cc.appendChild(carousel);
+slides.forEach(function(s){
+  s.style.zIndex = '5';
+
+  carousel.appendChild(s)
+})
+
 function nextSlide(){
 	goToSlide(currentSlide+1);
 }
+
 
 function previousSlide(){
 	goToSlide(currentSlide-1);
 }
 
 function goToSlide(n){
+
 	slides[currentSlide].className = 'slide';
 	currentSlide = (n+slides.length)%slides.length;
 	slides[currentSlide].className = 'slide';
